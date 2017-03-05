@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 const UserSchema = new Schema({
-  id: Number,
+  // id: Number,
   userName: String,
   mail: String,
   password: String, // Should this be here? Probably not.
@@ -11,5 +11,3 @@ const UserSchema = new Schema({
   expenses: Array,
   settlements: Array,
 })
-
-module.exports = mongoose.model('User', UserSchema)

@@ -19,7 +19,6 @@ const router = express.Router()
 const port = process.env.API_PORT || 3001
 
 // db config
-mongoose.connect('mongodb://airbookingadmin:airbooking@ds111489.mlab.com:11489/airbooking')
 
 // now we should configure the API to use bodyParser and look for
 // JSON data in the request body
@@ -43,76 +42,94 @@ router.get('/', (req, res) => {
   res.json({ message: 'API initialized' })
 })
 
-router.route('/contracts')
-  .get((req, res) => {
-    Contract.find((err, contracts) => {
-      if (err) {
-        res.send(err)
-      }
-      res.json(contracts)
-    })
-  })
+router.route('/flatboard')
   .post((req, res) => {
-    const contract = new Contract()
-    contract.name = req.body.name
-    contract.type = req.body.type
-    contract.duration = req.body.duration
-    contract.initialALDays = req.body.initialALDays
-    contract.workPlace = req.body.workPlace
-    contract.save((err) => {
+    const user = new User()
+    user.userName = req.body.userName
+    user.mail = req.body.mail
+    user.password = req.body.password // TODO: Lets add some salt and stuff
+    user.balance = req.body.balance
+    user.expense = req.body.expense
+    user.save((err) => {
+      res.send(err)
+    })
+    res.json({ message: 'User Added!' })
+  })
+  .get((req, res) => {
+    User.find((err, user) => {
       if (err) {
         res.send(err)
       }
-      res.json({ message: "Contract Added!"})
+      res.json(user)
     })
+    // Card.find((err, card) => {
+    //   if (err) {
+    //     res.send(err)
+    //   }
+    //   res.json(card)
+    // })
   })
+  // .post((req, res) => {
+  //   const contract = new Contract()
+  //   contract.name = req.body.name
+  //   contract.type = req.body.type
+  //   contract.duration = req.body.duration
+  //   contract.initialALDays = req.body.initialALDays
+  //   contract.workPlace = req.body.workPlace
+  //   contract.save((err) => {
+  //     if (err) {
+  //       res.send(err)
+  //     }
+  //     res.json({ message: "Contract Added!"})
+  //   })
+  // })
 
-router.route('/employees')
-  .get((req, res) => {
-    Employee.find((err, employees) => {
-      if (err) {
-        res.send(err)
-      }
-      res.json(employees)
-    })
-  })
-  .post((req, res) => {
-    const employee = new Employee()
-    employee.name = req.body.name
-    employee.contractType = req.body.contractType
-    employee.currentALDays = req.body.currentALDays
-    employee.currentSLDays = 0
-    employee.type = req.body.type
-    employee.team = req.body.team
-    employee.save((err) => {
-      if (err) {
-        res.send(err)
-      }
-      res.json({ message: 'Employee Added!' })
-    })
-  })
-
-router.route('/teams')
-  .get((req, res) => {
-    Team.find((err, team) => {
-      if (err) {
-        res.send(err)
-      }
-      res.json(team)
-    })
-  })
-  .post((req, res) => {
-    const team = new Team()
-    team.name = req.body.name
-    team.supervisor = req.body.supervisor
-    team.description = req.body.description
-    team.save((err) => {
-      if (err) {
-        res.send(err)
-      }
-      res.json({ message: 'Team Added!' })
-    })
-  })
+// router.route('/employees')
+//   .get((req, res) => {
+//     Employee.find((err, employees) => {
+//       if (err) {
+//         res.send(err)
+//       }
+//       res.json(employees)
+//     })
+//   })
+//   .post((req, res) => {
+//     const employee = new Employee()
+//     employee.name = req.body.name
+//     employee.contractType = req.body.contractType
+//     employee.currentALDays = req.body.currentALDays
+//     employee.currentSLDays = 0
+//     employee.type = req.body.type
+//     employee.team = req.body.team
+//     employee.save((err) => {
+//       if (err) {
+//         res.send(err)
+//       }
+//       res.json({ message: 'Employee Added!' })
+//     })
+//   })
+//
+// router.route('/teams')
+//   .get((req, res) => {
+//     Team.find((err, team) => {
+//       if (err) {
+//         res.send(err)
+//       }
+//       res.json(team)
+//     })
+//   })
+//   .post((req, res) => {
+//     const team = new Team()
+//     team.name = req.body.name
+//     team.supervisor = req.body.supervisor
+//     team.description = req.body.description
+//     team.save((err) => {
+//       if (err) {
+//         res.send(err)
+//       }
+//       res.json({ message: 'Team Added!' })
+//     })
+//   })
 //adding /comments route to our api router
 // router.route('/comments')
 // // retrieve the comments from the db
