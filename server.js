@@ -2,6 +2,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
 
+
 import {
   Card,
   Comment,
@@ -19,7 +20,7 @@ const router = express.Router()
 const port = process.env.API_PORT || 3001
 
 // db config
-
+mongoose.connect(NODE_ENV.MONGO)
 // now we should configure the API to use bodyParser and look for
 // JSON data in the request body
 app.use(bodyParser.urlencoded({ extended: true }))
