@@ -1,0 +1,13 @@
+{
+  "presets": [
+    "react",
+    "babel-preset-es2015",
+    "babel-preset-stage-0"
+  ],
+  "plugins": [
+    "transform-decorators-legacy",
+    "transform-flow-strip-types"
+  ],
+  "compact": true,
+  "ignore": false
+}
