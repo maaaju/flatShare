@@ -25,6 +25,7 @@
     "react-scripts": "0.9.3"
   },
   "scripts": {
+    "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "start": "react-scripts start",
     "start-dev": "nf start -p 3000",
     "build": "react-scripts build",

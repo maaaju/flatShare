@@ -92,7 +92,6 @@ router.route('/flatboard')
 // Use our router config when we call /API
 app.use('/api', router)
 
-console.log(router)
 app.listen(port, () => {
   console.log(`API running on port ${port}`)
 })

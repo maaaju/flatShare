@@ -1,17 +1,33 @@
+// @flow
 import React, { Component } from 'react'
+import axios from 'axios'
+
 import FlatBoard from './flatboard'
 
-class FlatBoardContainer extends Component {
+export default class FlatBoardContainer extends Component {
   constructor() {
     super()
     this.state = {
-      placeholder: 'lol',
+      user: '',
     }
   }
+  state: {
+    user: string,
+  }
+
+  loadUserFromServer() {
+    axios.get('http://localhost:3001/api/flatboard')
+    .then((res) => {
+      this.setState({ user: res.data })
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  }
+
 
   render() {
-    return <FlatBoard comments={this.state.placeholder} />
+    this.loadUserFromServer()
+    return (<FlatBoard comments={this.state.user} />)
   }
 }
-
-export default FlatBoardContainer
