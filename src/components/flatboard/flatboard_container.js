@@ -2,23 +2,29 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
+import setUsers from '../../actions'
 import FlatBoard from './flatboard'
 
 export default class FlatBoardContainer extends Component {
   constructor() {
     super()
     this.state = {
-      user: '',
+      user: {},
     }
   }
   state: {
-    user: string,
+    user: Object,
+  }
+
+  componentDidMount() {
+    this.loadUserFromServer()
   }
 
   loadUserFromServer() {
     axios.get('http://localhost:3001/api/flatboard')
     .then((res) => {
-      this.setState({ user: res.data })
+      console.log('action')
+      setUsers(res)
     })
     .catch((err) => {
       console.log(err)
@@ -27,7 +33,6 @@ export default class FlatBoardContainer extends Component {
 
 
   render() {
-    this.loadUserFromServer()
-    return (<FlatBoard comments={this.state.user} />)
+    return (<FlatBoard />)
   }
 }
