@@ -1,7 +1,7 @@
 ## Epic side project:
 
 This is my epic side project. <br>
-Check out some of the thoughts behind this project at: 
+Check out some of the thoughts behind this project at: <br>
 -[Exploring functionality with wireframes](https://medium.com/@aajularsen/a-side-project-as-part-of-your-portfolio-designing-as-a-programmer-e4abaa3cb9f6#.3krw3qi3h)
 
 It's created using 'create-react-app'
