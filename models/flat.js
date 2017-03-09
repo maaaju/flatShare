@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 const FlatSchema = new Schema({
-  id: Number,
+  //id: Number,
   flatName: String,
   flatUsers: Array,
 })

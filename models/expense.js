@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 const ExpenseSchema = new Schema({
-  id: Number,
+  // id: Number,
   userName: String,
   amount: Number,
   recurring: Boolean,

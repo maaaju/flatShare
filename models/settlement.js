@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 const SettlementSchema = new Schema({
-  id: Number,
+  // id: Number,
   fromUser: String,
   toUser: String,
   amount: Number,
