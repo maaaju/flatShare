@@ -1,7 +1,21 @@
 // @flow
-const setUsers = (user: Object) => ({
-  type: 'SET_USER',
-  user,
-})
+const SET_USER = 'SET_USER'
 
-export default setUsers
+const Actions = {
+
+  setUsers: user => (dispatch) => {
+    dispatch({
+      type: SET_USER,
+      user,
+    })
+  },
+
+  setCards: cards => (dispatch) => {
+    dispatch({
+      type: 'SET_CARDS',
+      cards,
+    })
+  },
+}
+
+export default Actions

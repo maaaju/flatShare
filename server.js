@@ -50,13 +50,17 @@ router.route('/flatboard')
       }
       res.json(user)
     })
-    Card.find((err, card) => {
+  })
+router.route('/flatboard/cards')
+  .get((req, res) => {
+    Card.find((err, card) =>{
       if (err) {
         res.send(err)
       }
       res.json(card)
     })
   })
+
 
 // router.route('/comments/:comment_id')
 // //Adding a route to a specific comment based on the db id passed to the route

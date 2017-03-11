@@ -1,8 +1,11 @@
 // @flow
 import React, { Component, PropTypes } from 'react'
-import { connect } from 'react-redux'
+import AppBar from 'material-ui/AppBar'
+import { deepPurple200, grey50 } from 'material-ui/styles/colors'
+import FlatButton from 'material-ui/FlatButton'
+import Board from '../board/board'
 
-class FlatBoard extends Component {
+export default class FlatBoard extends Component {
   constructor() {
     super()
     this.state = {
@@ -17,10 +20,23 @@ class FlatBoard extends Component {
   }
 
   render() {
-    const { comments } = this.props
-    console.log(comments)
+    const { flatboard } = this.props
     return (
-      <div>Hi</div>
+      <div>
+        <header>
+          <AppBar
+            title="flatShare"
+            style={{ backgroundColor: deepPurple200 }}
+          >
+            <FlatButton label="flatBoard" labelStyle={{ color: grey50, fontSize: '24px' }} style={{ lineHeight: '50px'}} />
+            <FlatButton label="flatAccounting" labelStyle={{ color: grey50, fontSize: '24px' }} style={{ lineHeight: '50px'}} />
+            <FlatButton label="flatCalendar" labelStyle={{ color: grey50, fontSize: '24px' }} style={{ lineHeight: '50px'}} />
+            <FlatButton label="flatTasks" labelStyle={{ color: grey50, fontSize: '24px' }} style={{ lineHeight: '50px'}} />
+          </AppBar>
+        </header>
+        <Board />
+      </div>
+
     )
   }
 }
@@ -28,11 +44,3 @@ class FlatBoard extends Component {
 FlatBoard.propTypes = {
   comments: PropTypes.string,
 }
-
-
-const mapStateToProps = state => (
-  {
-    user: state.flatboard,
-  }
-)
-export default connect(mapStateToProps)(FlatBoard)

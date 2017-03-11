@@ -1,6 +1,7 @@
 // @flow
 import React, { Component } from 'react'
 import LoginContainer from './login/login_container'
+import '../css/app.css'
 
 class App extends Component {
   render() {
